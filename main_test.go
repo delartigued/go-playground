@@ -12,7 +12,7 @@ func TestHelloEndpoint(t *testing.T) {
 		First we'll use go's built in http mocking tools to create
 		a mock request and a mock response writer
 	*/
-	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	req := httptest.NewRequest(http.MethodPost, "/", nil)
 	w := httptest.NewRecorder()
 
 	/*
@@ -25,9 +25,8 @@ func TestHelloEndpoint(t *testing.T) {
 		of that line until the function closes. This way I can
 		be sure that the result body will always be closed.
 
-		Go is able to have two return types. In most cases the second
-		one is used for errors, but it can be anything. In this case,
-		it's an error
+		Go is able to have multiple return types.
+		In this case (as in most), it's an error
 	*/
 	res := w.Result()
 	defer res.Body.Close()
