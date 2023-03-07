@@ -47,12 +47,12 @@ func main() {
 		the name of the handler function associated with it
 
 		mux is being used now, so it's no longer in red,
-		but we haven't defined root, so we'll do that now
+		but we haven't defined hello, so we'll do that now
 	*/
-	mux.HandleFunc("/", root)
+	mux.HandleFunc("/", hello)
 
 	/*
-		4.
+		6.
 
 		Now we'll tell go to listen on an address and port
 		We also need to pass in the multiplexer
@@ -64,15 +64,15 @@ func main() {
 /*
 3.
 
-We have a root function declared, but the Handlefunc is still complaining, so what's up?
+We have a hello function declared, but the Handlefunc is still complaining, so what's up?
 
 We can use intellij to show us what's expected.
 Once we add the correct args, everything goes green again
 */
-func root(w http.ResponseWriter, r *http.Request) {
+func hello(w http.ResponseWriter, r *http.Request) {
 
 	/*
-		5.
+		4.
 
 		we can log anything we want about the request, so let's keep track of the route and http verb used
 	*/
@@ -86,7 +86,7 @@ func root(w http.ResponseWriter, r *http.Request) {
 	stringChan <- r.RemoteAddr
 
 	/*
-		6.
+		5.
 
 		then let's just make this return something really simple for now
 	*/
